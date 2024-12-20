@@ -1,0 +1,1 @@
+procedure Parsing ; begin VAR a , b : INTEGER a := 5 + b mod 3 a := a - ( 2 + 3 ) * b end
