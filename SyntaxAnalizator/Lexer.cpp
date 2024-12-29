@@ -68,6 +68,10 @@ string Lexer::getLexem(ifstream& in)
 		res += c;
 		c = in.get();
 	}
+	if (c == EOF)
+	{
+		return " ";
+	}
 	return res;
 }
 
