@@ -6,7 +6,7 @@ using std::ofstream;
 int main()
 {
 	ifstream in("input.txt");
-	ofstream out("output.txt");
+	ofstream out("outLex.txt");
 	Hash table;
 	Lexer lexer;
 	vector<Token> ter;
@@ -32,6 +32,9 @@ int main()
 			s = lexer.getLexem(in);
 		}
 	}
+	table.print(out);
+	out.close();
+	out.open("outTree.txt");
 	Parser parser(ter);
 	pair<bool, pair<int, string>> result = parser.detected();
 	if (result.first == false)

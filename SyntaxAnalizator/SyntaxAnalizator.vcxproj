@@ -143,8 +143,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
-    <Text Include="output.txt" />
+    <Text Include="outLex.txt" />
     <Text Include="outTranslate.txt" />
+    <Text Include="outTree.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
