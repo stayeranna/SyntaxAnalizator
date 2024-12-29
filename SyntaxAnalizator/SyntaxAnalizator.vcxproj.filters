@@ -54,5 +54,6 @@
   <ItemGroup>
     <Text Include="input.txt" />
     <Text Include="output.txt" />
+    <Text Include="outTranslate.txt" />
   </ItemGroup>
 </Project>

@@ -17,9 +17,9 @@ class Parser {
 	vector<string> Str;
 	string get_term(Token& a);
 	vector<vector<map<int, pair<pair<int, pair<int, int>>, pair<int, pair<int, int>>>>>> getTable();
-	void getChildren(Node& node, pair<int, pair<pair<int, pair<int, int>>, pair<int, pair<int, int>>>> p, vector<vector<map<int, pair<pair<int, pair<int, int>>, pair<int, pair<int, int>>>>>>& A);
+	void getChildren(Node& node, pair<int, pair<pair<int, pair<int, int>>, pair<int, pair<int, int>>>> p, vector<vector<map<int, pair<pair<int, pair<int, int>>, pair<int, pair<int, int>>>>>>& A, vector<Token>& ter, int& number);
 public:
 	Parser(vector<Token>& a);
 	pair<bool, pair<int, string>> detected();
-	Node makeTree();
+	Node makeTree(vector<Token>& ter);
 };

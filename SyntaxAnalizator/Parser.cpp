@@ -95,29 +95,32 @@ pair<bool, pair<int, string>> Parser::detected()
 	return { false, {num, proc[u]} };
 }
 
-void Parser::getChildren(Node& node, pair<int, pair<pair<int, pair<int, int>>, pair<int, pair<int, int>>>> p, vector<vector<map<int, pair<pair<int, pair<int, int>>, pair<int, pair<int, int>>>>>>& A)
+void Parser::getChildren(Node& node, pair<int, pair<pair<int, pair<int, int>>, pair<int, pair<int, int>>>> p, vector<vector<map<int, pair<pair<int, pair<int, int>>, pair<int, pair<int, int>>>>>>& A, vector<Token>& ter, int& number)
 {
 	if (p.second.second.first == -1)
 	{
 		node.children.push_back(Node(trTerms[p.second.first.first]));
+		node.children[0].list = ter[number].lexem;
+		++number;
 		return;
 	}
 	pair<int, pair<pair<int, pair<int, int>>, pair<int, pair<int, int>>>> p1 = *A[p.second.first.second.first][p.second.first.second.second].find(p.second.first.first);
 	Node c(trNeterms[p.second.first.first]);
-	getChildren(c, p1, A);
+	getChildren(c, p1, A, ter, number);
 	node.children.push_back(c);
 	p1 = *A[p.second.second.second.first][p.second.second.second.second].find(p.second.second.first);
 	Node d(trNeterms[p.second.second.first]);
-	getChildren(d, p1, A);
+	getChildren(d, p1, A, ter, number);
 	node.children.push_back(d);
 }
 
-Node Parser::makeTree()
+Node Parser::makeTree(vector<Token>& ter)
 {
 	vector<vector<map<int, pair<pair<int, pair<int, int>>, pair<int, pair<int, int>>>>>> A = getTable();
 	int n = Str.size();
 	pair<int, pair<pair<int, pair<int, int>>, pair<int, pair<int, int>>>> p = *A[n][0].find(0);
 	Node root(trNeterms[p.first]);
-	getChildren(root, p, A);
+	int number = 0;
+	getChildren(root, p, A, ter, number);
 	return root;
 }

@@ -1,0 +1,7 @@
+Parsing a b c INTEGER 4 DECL h g j REAL 4 DECL 2 DESCR a 2 4 + 3 mod ASSIGN b a 8 * j + ASSIGN h 0.5 2 * ASSIGN u 3 ASSIGN 4 OPERATORS MAIN
+
+
+List of errors:
+different types: a 8 * is int, j is real
+different types: 0.5 is real, 2 is int
+u: was not declared
